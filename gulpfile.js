@@ -6,7 +6,7 @@ var awspublish = require('gulp-awspublish');
 
 var paths = {
 	entry: 'client/app/app.js',
-	app: ['client/app/**/*.{js, styl, html}', 'client/styles/**/*.styl'],
+	app: ['client/app/**/*.{js,styl,html}', 'client/styles/**/*.styl'],
 	toCopy: ['client/index.html'],
 	dest: 'dist'
 };
