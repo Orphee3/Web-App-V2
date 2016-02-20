@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var sync = require('run-sequence');
 var browser = require('browser-sync');
 var webpack = require('webpack-stream');
+var awspublish = require('gulp-awspublish');
 
 var paths = {
 	entry: 'client/app/app.js',
@@ -33,10 +34,23 @@ gulp.task('serve', function() {
 });
 
 gulp.task('watch', function() {
-	gulp.watch(paths.app, [build, browser.reload]);
-	gulp.watch(paths.toCopy, [build, browser.reload]);
+	gulp.watch(paths.app, ['build', browser.reload]);
+	gulp.watch(paths.toCopy, ['copy', browser.reload]);
+});
+
+gulp.task('deploy', ['build', 'copyEntryPoint'], function() {
+	var conf = require('./aws.config');
+	var publisher = awspublish.create(conf['dev']);
+	return gulp.src('./dist/**/*')
+		.pipe(awspublish.gzip({ ext: '' }))
+		.pipe(publisher.publish(conf['dev' + 'Headers']))
+		.pipe(publisher.cache())
+		.pipe(publisher.sync())
+		.pipe(awspublish.reporter({
+			states: ['create', 'update', 'delete']
+		}));
 });
 
 gulp.task('default', function (done) {
-	sync('build', 'copyEntryPoint', 'serve', done);
+	sync('build', 'copyEntryPoint', 'serve', 'watch', done);
 });
