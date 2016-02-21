@@ -7,6 +7,7 @@ import ngAria from 'angular-aria';
 import ngMessage from 'angular-messages';
 import ngMaterial from 'angular-material';
 
+import {shared} from './shared/shared';
 import {home} from './components/home/home';
 import {login} from './components/login/login';
 
@@ -17,6 +18,7 @@ angular.module('Orphee', [
 	ngMessage,
 	ngMaterial,
 
+	shared.name,
 	home.name,
 	login.name
 ])
