@@ -9,11 +9,13 @@ class LoginController {
 			login: '',
 			password: ''
 		};
+		this.loginError = false;
 	}
 
 	submit() {
 		console.log('submit !');
-		this.Auth.login(this.credentials);
+		this.Auth.login(this.credentials)
+			.catch(err => this.loginError = true);
 	}
 }
 

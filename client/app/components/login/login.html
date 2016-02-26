@@ -1,13 +1,18 @@
 <md-content layout="column" layout-align="center center" ng-style="{ 'background-image': 'url(' + vm.loginpic + ')', 'height': '100%' }">
-	<form ng-submit="vm.submit()" layout="column">
-		<md-input-container>
-			<input type="text" ng-model="vm.credentials.login" placeholder="login">
-		</md-input-container>
-		<md-input-container>
-			<input type="text" ng-model="vm.credentials.password" placeholder="password">
-		</md-input-container>
-		<md-button type="submit" class="md-primary md-raised">
-				Se connecter
-		</md-button>
-	</form>
+	<md-content class="md-whiteframe-z3 login-frame">
+		<form ng-submit="vm.submit()" class="login-form" layout="column" layout-align="center center">
+			<div ng-if="vm.loginError" class="login-error">
+				<span layout="row"><i class="material-icons">warning</i>{{ 'LOGIN_ERROR' | translate }}</span>	
+			</div>
+			<md-input-container>
+				<input type="text" ng-model="vm.credentials.login" placeholder="login">
+			</md-input-container>
+			<md-input-container>
+				<input type="text" ng-model="vm.credentials.password" placeholder="password">
+			</md-input-container>
+			<md-button type="submit" class="md-primary md-raised">
+					Se connecter
+			</md-button>
+		</form>
+	</md-content>
 </md-content>

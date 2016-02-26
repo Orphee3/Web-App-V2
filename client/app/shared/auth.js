@@ -10,8 +10,9 @@ const auth = ($http, API) => {
 			headers: {
 				Authorization: `Bearer ${encoded}`
 			}
-		}).then(function(data) {
-			console.log(data.data);
+		})
+		.then(({data}) => {
+			console.log(data);
 		});
 	};
 
