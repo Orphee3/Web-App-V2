@@ -6,6 +6,10 @@ import ngAnimate from 'angular-animate';
 import ngAria from 'angular-aria';
 import ngMessage from 'angular-messages';
 import ngMaterial from 'angular-material';
+import ngTranslate from 'angular-translate';
+
+import {languages} from './app.languages';
+import {palettes} from './app.palettes';
 
 import {shared} from './shared/shared';
 import {home} from './components/home/home';
@@ -17,13 +21,12 @@ angular.module('Orphee', [
 	ngAria,
 	ngMessage,
 	ngMaterial,
+	ngTranslate,
 
 	shared.name,
 	home.name,
 	login.name
 ])
 .directive('app', appDirective)
-.config(function ($mdThemingProvider) {
-	$mdThemingProvider.theme('default')
-		.primaryPalette('blue');
-});
+.config(palettes)
+.config(languages);
