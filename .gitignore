@@ -4,3 +4,4 @@ dist
 .awspublish-orphee-web-app
 aws.config.js
 npm-debug.log
+.idea
