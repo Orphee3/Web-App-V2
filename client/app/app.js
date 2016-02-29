@@ -15,6 +15,7 @@ import {shared} from './shared/shared';
 import {head} from './components/header/header';
 import {home} from './components/home/home';
 import {login} from './components/login/login';
+import {signup} from './components/signup/signup';
 
 angular.module('Orphee', [
 	uiRouter,
@@ -27,7 +28,8 @@ angular.module('Orphee', [
 	shared.name,
 	home.name,
 	login.name,
-  head.name
+  head.name,
+  signup.name
 ])
 .directive('app', appDirective)
 .config(palettes)

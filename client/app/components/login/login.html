@@ -1,19 +1,30 @@
 <md-content layout="column" layout-align="start center" ng-style="{ 'background-image': 'url(' + vm.loginpic + ')', 'height': '100%' }">
-	<img ng-src="{{vm.logo}}" style="height: 300px; width: 300px; margin-top: 50px; margin-bottom: 25px;">
+	<img ng-src="{{vm.logo}}" class="login-logo">
   <md-content class="md-whiteframe-z3 login-frame">
-		<form ng-submit="vm.submit()" class="login-form" layout="column" layout-align="center center" style="padding-bottom: 15px; padding-top: 15px;">
+		<form ng-submit="vm.submit()" class="login-form" layout="column" layout-align="center center">
+      <div class="login-title">{{ 'LOGIN_CONNECT' | translate }}</div>
 			<md-input-container ng-if="vm.loginError" class="login-error">
 				<span layout="row"><i class="material-icons">warning</i>{{ 'LOGIN_ERROR' | translate }}</span>	
 			</md-input-container>
-			<md-input-container>
-				<input type="text" ng-model="vm.credentials.login" placeholder="login">
-			</md-input-container>
-			<md-input-container>
-				<input type="text" ng-model="vm.credentials.password" placeholder="password">
-			</md-input-container>
-			<md-button type="submit" class="md-primary md-raised">
-					Se connecter
-			</md-button>
+      <div layout="row">
+        <md-icon class="md-primary login-icon"><i class="material-icons md-36">person</i></md-icon>
+        <md-input-container layout="row" class="login-input-container">
+          <label>{{ 'LOGIN_NAME' | translate }}</label>
+          <input type="text" ng-model="vm.credentials.login">
+        </md-input-container>
+      </div>
+      <div layout="row" class="login-pass-container">
+        <md-icon class="md-primary login-icon"><i class="material-icons md-36">enhanced_encryption</i></md-icon>
+        <md-input-container layout="row" class="login-input-container">
+          <label>{{ 'LOGIN_PASSWORD' | translate }}</label>
+          <input type="text" ng-model="vm.credentials.password">
+        </md-input-container>
+      </div>
+			<md-button type="submit" class="md-primary md-raised login-button">{{ 'LOGIN_CONTINUE' | translate }}</md-button>
 		</form>
+    <a ui-sref="signup" layout="row" layout-align="center center" class="login-link-container">
+      {{ 'LOGIN_NEW' | translate }}?&nbsp
+      <span class="login-link">{{ 'SIGN_UP' | translate }}</span>
+    </a>
 	</md-content>
 </md-content>
