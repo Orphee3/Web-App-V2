@@ -1,3 +1,4 @@
+import './signup.styl';
 import template from './signup.html';
 import {signupController as controller} from './signup.controller';
 

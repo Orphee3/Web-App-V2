@@ -10,7 +10,7 @@ module.exports = {
 			{ test: /\.html$/, loader: 'raw' },
 			{ test: /\.styl$/, loader: 'style!css!stylus' },
 			{ test: /\.css/, loader: 'style!css' },
-			{ test: /\.(png|jpg|jpeg)$/, loader: 'file' },
+			{ test: /\.(png|jpg|jpeg|svg)$/, loader: 'file' },
 			{ test: /\.js$/, loader: 'babel', exclude: [/client\/lib/, /node_modules/, /\.spec\.js/] }
 		]
 	}

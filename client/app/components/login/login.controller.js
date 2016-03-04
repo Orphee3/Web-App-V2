@@ -1,5 +1,7 @@
 import bg from '../../../images/bg-login.jpg';
-import logo from '../../../images/logo.png';
+import orphee from '../../../images/logo.png';
+import fb from '../../../images/facebook.svg';
+import google from '../../../images/google.svg';
 
 class LoginController {
 	constructor($location, Auth) {
@@ -7,8 +9,8 @@ class LoginController {
     this.$location = $location;
 
 		this.loginpic = bg;
-    this.logo = logo;
-		this.credentials = {
+    this.logo = {orphee, fb, google};
+    this.credentials = {
 			login: '',
 			password: ''
 		};
