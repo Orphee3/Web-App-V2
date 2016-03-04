@@ -6,7 +6,7 @@ import google from '../../../images/google.svg';
 class signupController {
   constructor($location, Auth) {
     this.Auth = Auth;
-    this.location = $location;
+    this.$location = $location;
 
     this.signupPic = bg;
     this.logo = {orphee, fb, google};
@@ -19,11 +19,14 @@ class signupController {
     this.loginError = false;
   }
 
+  loginSocial(provider) {
+    this.Auth.loginSocial(provider)
+      .then(() => this.$location.url('/'));
+  }
+
   submit() {
     this.Auth.signup(this.credentials)
-    .then(() => {
-      $location.url('/');
-    })
+    .then(() => this.$location.url('/'))
     .catch(err => {
       if (err.status === 409) return this.loginError = 'alreadyUse';
       this.loginError = err;

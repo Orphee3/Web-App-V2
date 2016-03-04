@@ -1,4 +1,4 @@
-const auth = ($window, $http, $q, API) => {
+const auth = ($window, $http, $q, $auth, API) => {
 
 	let log = false;
 
@@ -14,11 +14,12 @@ const auth = ($window, $http, $q, API) => {
 		log = false;
 		delete $window.localStorage.user;
 		delete $window.localStorage.token;
+    $auth.logout();
 	};
 	
   const login = (credentials) => {
 		
-		let encoded = btoa(`${credentials.login}:${credentials.password}`);
+		const encoded = btoa(`${credentials.login}:${credentials.password}`);
 	
 		return $http({
 			method: 'POST',
@@ -30,9 +31,18 @@ const auth = ($window, $http, $q, API) => {
 		.then(({data}) => {
 			log = true;
 			$window.localStorage.user = JSON.stringify(data.user);
-			$window.localStorage.token = JSON.stringify(data.token);
+			$auth.setToken(data.token);
 		});
 	};
+
+  const loginSocial = (provider) => {
+    return $auth.authenticate(provider)
+      .then(({data}) => {
+        log = true;
+        $window.localStorage.user = JSON.stringify(data.user);
+      })
+      .catch(() => $auth.logout());
+  };
   
   const signup = (credentials) => {
     const {login, password, name, confirmPassword} = credentials;
@@ -51,13 +61,13 @@ const auth = ($window, $http, $q, API) => {
     .then(({data}) => {
       log = true;
       $window.localStorage.user = JSON.stringify(data.user);
-      $window.localStorage.token = JSON.stringify(data.token);
+      $auth.setToken(data.token);
     });
   };
 
-	return {login, signup, isLog, getUser, logout};
+	return {login, loginSocial, signup, isLog, getUser, logout};
 };
 
-auth.$inject = ['$window', '$http', '$q', 'API'];
+auth.$inject = ['$window', '$http', '$q', '$auth', 'API'];
 
 export {auth};

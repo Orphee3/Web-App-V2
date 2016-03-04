@@ -17,12 +17,16 @@ class LoginController {
 		this.loginError = false;
 	}
 
+  loginSocial(provider) {
+    this.Auth.loginSocial(provider)
+      .then(() => this.$location.url('/'))
+      .catch(err => console.log(err));
+  }
+
 	submit() {
 		console.log('submit !');
 		this.Auth.login(this.credentials)
-			.then(() => {
-        this.$location.url('/');
-			})
+			.then(() => this.$location.url('/'))
 			.catch(err => this.loginError = true);
 	}
 }

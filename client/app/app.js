@@ -7,15 +7,18 @@ import ngAria from 'angular-aria';
 import ngMessage from 'angular-messages';
 import ngMaterial from 'angular-material';
 import ngTranslate from 'angular-translate';
+import satellizer from 'satellizer';
 
-import {languages} from './app.languages';
-import {palettes} from './app.palettes';
+import {languages} from './app.config.languages';
+import {palettes} from './app.config.palettes';
+import {social} from './app.config.social';
 
 import {shared} from './shared/shared';
 import {head} from './components/header/header';
 import {home} from './components/home/home';
 import {login} from './components/login/login';
 import {signup} from './components/signup/signup';
+
 
 angular.module('Orphee', [
 	uiRouter,
@@ -24,6 +27,7 @@ angular.module('Orphee', [
 	ngMessage,
 	ngMaterial,
 	ngTranslate,
+  satellizer,
 
 	shared.name,
 	home.name,
@@ -33,4 +37,5 @@ angular.module('Orphee', [
 ])
 .directive('app', appDirective)
 .config(palettes)
-.config(languages);
+.config(languages)
+.config(social);

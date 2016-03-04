@@ -5,8 +5,8 @@
     <hr class="signup-hr">
     <md-toolbar class="login-bar-container-social">
       <div layout="row" class="md-toolbar-tools md-whiteframe-z3" >
-        <md-icon md-svg-src="{{vm.logo.fb}}"></md-icon>
-        <md-icon md-svg-src="{{vm.logo.google}}"></md-icon>        
+        <md-icon ng-click="vm.loginSocial('facebook')" md-svg-src="{{vm.logo.fb}}"></md-icon>
+        <md-icon ng-click="vm.loginSocial('google')" md-svg-src="{{vm.logo.google}}"></md-icon>        
       </div>
     </md-toolbar>
     <md-content class="md-whiteframe-z3 login-frame">
