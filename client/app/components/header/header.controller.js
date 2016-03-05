@@ -8,7 +8,7 @@ class headerController {
   isLog() {
     const islog = this.Auth.isLog();
     if (!islog) return false;
-    if (!this.user) this.user = this.Auth.getUser();
+    this.user = this.Auth.getUser();
     return true;
   }
 }
