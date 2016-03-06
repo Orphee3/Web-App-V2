@@ -1,6 +1,9 @@
 <md-toolbar>
   <div class="md-toolbar-tools">
-    Orphée
+    <a layout="row" layout-align="center center" ui-sref="home">
+      <img ng-src="{{vm.logo.orphee}}" style="height: 50px; width: 50px;">
+      Orphée
+    </a>
     <span flex></span>
     <a ng-if="!vm.isLog()" ui-sref="login">Se connecter</a>
     <md-menu md-offset="0 60" ng-if="vm.isLog()">

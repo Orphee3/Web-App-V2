@@ -1,8 +1,12 @@
+import orphee from '../../../images/logo.png';
+
 class headerController {
   constructor(Auth) {
     this.Auth = Auth;
     this.user = Auth.getUser();
     this.logout = Auth.logout;
+
+    this.logo = {orphee};
   }
 
   isLog() {
