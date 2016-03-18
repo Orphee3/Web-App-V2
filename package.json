@@ -48,6 +48,7 @@
     "angular-messages": "^1.5.0",
     "angular-translate": "^2.9.2",
     "angular-ui-router": "^0.2.18",
-    "satellizer": "^0.14.0"
+    "satellizer": "^0.14.0",
+    "swiper": "^3.3.1"
   }
 }

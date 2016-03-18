@@ -1,6 +1,9 @@
 <div id="app" style="height: 100%">
   <header-nav></header-nav>
-  <div ui-view style="height: 100%"></div>
+  <div layout="row" style="height: 100%; width: 100%;">
+    <side-nav-menu style="height: 100%"></side-nav-menu>
+    <div ui-view flex style="height: 100%; width: 100%;"></div>
+  </div>
 
-  <footer></footer>
+  <audio-player>lolivache</audio-player>
 </div>

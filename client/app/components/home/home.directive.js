@@ -1,5 +1,6 @@
 import template from './home.html';
 import {homeController as controller} from './home.controller';
+import './home.styl';
 
 export const homeDirective = ()=> {
 	return {
