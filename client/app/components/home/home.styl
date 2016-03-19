@@ -1,6 +1,7 @@
 .swiper-container
   width: 99%
-  height: 400px
+  min-width: 724px
+  height: 360px
 
 .swiper-slide
   text-align: center
@@ -23,3 +24,28 @@
   
   @media screen and (min-width: 1280px)
     padding-left: 320px
+
+.home-hide
+  visibility: hidden
+  padding-left: 15px;
+
+.toto
+  padding: 5px 40px 5px 30px
+  &:hover
+    background-color: #e6e6e6
+    .home-hide
+      visibility: visible
+
+.carousel-text
+  position: absolute
+  top: 15px
+  z-index: 2
+  color: white
+  font-size: 27px
+  width: 500px
+
+.c-right
+  right: 180px
+
+.c-left
+  left: 180px

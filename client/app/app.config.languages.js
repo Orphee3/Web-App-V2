@@ -1,5 +1,8 @@
 export const languages = ($translateProvider) => {
 		$translateProvider.translations('en', {
+      HOME_POPULAR_SONG: 'Popular song',
+      HOME_ARTISTS: 'Artists',
+
       LOGIN_CONNECT: 'Log in to your account',
 			LOGIN_ERROR: 'Oops, that\'s not a match.',
       LOGIN_EMAIL: 'Login',
@@ -28,6 +31,9 @@ export const languages = ($translateProvider) => {
     });
 
 		$translateProvider.translations('fr', {
+      HOME_POPULAR_SONG: 'Morceaux les plus populaires',
+      HOME_ARTISTS: 'Artistes',
+
       LOGIN_CONNECT: 'Connectez-vous sur Orphée',
       LOGIN_ERROR: 'Les informations saisies ne correspondent pas.',
       LOGIN_EMAIL: 'Email',

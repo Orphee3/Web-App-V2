@@ -1,16 +1,8 @@
 <md-content style="display: block; top: 64px;" class="home-container">
   <div class="swiper-container">
     <div class="swiper-wrapper">
-        <div class="swiper-slide" >Slide 1</div>
-        <div class="swiper-slide">Slide 2</div>
-        <div class="swiper-slide">Slide 3</div>
-        <div class="swiper-slide">Slide 4</div>
-        <div class="swiper-slide">Slide 5</div>
-        <div class="swiper-slide">Slide 6</div>
-        <div class="swiper-slide">Slide 7</div>
-        <div class="swiper-slide">Slide 8</div>
-        <div class="swiper-slide">Slide 9</div>
-        <div class="swiper-slide">Slide 10</div>
+        <div class="swiper-slide"><img style="width: 85% ; min-width: 724px; height: 360px;" src="https://themify.me/demo/themes/music/files/2014/07/rock-guitar.jpg"><span class="carousel-text c-right">{{'SIGNUP_TOGETHER_CONTENT' | translate}}</span></div>
+        <div class="swiper-slide"><img style="width: 85% ; min-width: 724px; height: 360px;" src="https://musicimage.xboxlive.com/image/spotlight.c6ca2600-0000-0000-0000-000000000002?ss=2000:1000"><span class="carousel-text c-left">{{ 'SIGNUP_CREATE_CONTENT' | translate }}</span></div>
     </div>
     <!-- Add Pagination -->
     <div class="swiper-pagination"></div>
@@ -18,67 +10,31 @@
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
   </div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>  
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>  
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>  
-  <div>a</div>
-  <div>a</div>
-  <div>a</div>
+
+  <div style="padding-left: 10px;">
+    <h2>{{ 'HOME_POPULAR_SONG' | translate }}</h2>
+    <hr style="color: #e6e6e6">
+    <div layout="column">
+      <div layout="row" ng-repeat="creation in vm.creations" style="font-size: 20px; border-bottom: 1px solid #e6e6e6" class="toto">
+      <div flex="5">{{$index + 1}}</div>
+      <div layout="row" layout-align="start center" flex="40">{{creation.name}}<div class="home-hide"><md-button class="md-icon-button md-primary"><i class="material-icons">play_arrow</i></md-button></div></div>
+      <div flex="20">{{creation.creator[0].name}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding-left: 10px; margin-bottom: 200px;">
+    <h2>{{ 'HOME_ARTISTS' | translate }}</h2>
+    <div layout="row">
+      <span layout="column" ng-repeat="artist in vm.users" layout-align="center center" style="padding-right: 10px;">
+      <img ng-src="{{artist.picture}}" style="height: 100px; width: 100px;">
+        <div>{{artist.name}}</div>
+        
+      </span>
+      
+    </div>
+  
+
+
+  </div>
 </md-content>
