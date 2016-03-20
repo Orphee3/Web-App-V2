@@ -1,4 +1,4 @@
-const auth = ($window, $http, $q, $auth, API) => {
+const auth = ($window, $http, $q, $auth, API, Socket) => {
 
 	let log = false;
 
@@ -15,6 +15,8 @@ const auth = ($window, $http, $q, $auth, API) => {
 		delete $window.localStorage.user;
 		delete $window.localStorage.token;
     $auth.logout();
+    Socket.disconnect();
+    $window.location.reload();
 	};
 	
   const login = (credentials) => {
@@ -32,6 +34,7 @@ const auth = ($window, $http, $q, $auth, API) => {
 			log = true;
 			$window.localStorage.user = JSON.stringify(data.user);
 			$auth.setToken(data.token);
+      Socket.connect();
 		});
 	};
 
@@ -68,6 +71,6 @@ const auth = ($window, $http, $q, $auth, API) => {
 	return {login, loginSocial, signup, isLog, getUser, logout};
 };
 
-auth.$inject = ['$window', '$http', '$q', '$auth', 'API'];
+auth.$inject = ['$window', '$http', '$q', '$auth', 'API', 'Socket'];
 
 export {auth};

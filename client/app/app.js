@@ -9,6 +9,7 @@ import ngMaterial from 'angular-material';
 import ngTranslate from 'angular-translate';
 import satellizer from 'satellizer';
 import swiper from 'Swiper';
+import ngSocket from 'angular-socket-io';
 
 import {languages} from './app.config.languages';
 import {palettes} from './app.config.palettes';
@@ -31,6 +32,7 @@ angular.module('Orphee', [
 	ngMaterial,
 	ngTranslate,
   satellizer,
+  'btford.socket-io',
 
 	shared.name,
 	home.name,
