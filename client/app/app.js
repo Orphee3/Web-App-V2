@@ -22,7 +22,7 @@ import {audioPlayer} from './components/audioPlayer/audioPlayer';
 import {home} from './components/home/home';
 import {login} from './components/login/login';
 import {signup} from './components/signup/signup';
-
+import {chat} from './components/chat/chat';
 
 angular.module('Orphee', [
 	uiRouter,
@@ -40,7 +40,8 @@ angular.module('Orphee', [
   audioPlayer.name,
 	login.name,
   head.name,
-  signup.name
+  signup.name,
+  chat.name
 ])
 .directive('app', appDirective)
 .config(palettes)

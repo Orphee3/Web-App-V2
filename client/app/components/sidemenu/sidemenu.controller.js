@@ -1,6 +1,11 @@
 class sidemenuController {
-  constructor($location) {
+  constructor($location, Auth) {
     this.$location = $location;
+    this.Auth = Auth;
+  }
+
+  isLog() {
+    return this.Auth.isLog();
   }
 
   showNav() {
@@ -13,6 +18,6 @@ class sidemenuController {
   }
 }
 
-sidemenuController.$inject = ['$location'];
+sidemenuController.$inject = ['$location', 'Auth'];
 
 export {sidemenuController};
