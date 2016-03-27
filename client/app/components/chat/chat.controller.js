@@ -9,7 +9,7 @@ class chatController {
 
     this.Socket.on('private message', (data) => {
       if (!this.selectedFriend) {
-        
+
 
         return;
       } 
@@ -34,6 +34,11 @@ class chatController {
     this.Socket.emit('private message', {to: this.selectedFriend._id, message});
     const user = this.Auth.getUser();
     this.messages.push({creator: {name: user.name, picture: user.picture}, message});
+  }
+
+  deleteFriend(friend) {
+    this.Users.deleteFriend(friend._id)
+      .then(() => this.getFriends());
   }
 }
 

@@ -11,7 +11,12 @@ const users = ($window, $http, API) => {
       .then(({data}) => data);
   };
 
-  return {get, getFriends};
+  const deleteFriend = (idFriend) => {
+    return $http.get(`${API.url}/api/removeFriend/${idFriend}`)
+      .then(({data}) => data);
+  };
+
+  return {get, getFriends, deleteFriend};
 };
 
 users.$inject = ['$window', '$http', 'API'];
