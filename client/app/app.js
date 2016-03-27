@@ -23,6 +23,7 @@ import {home} from './components/home/home';
 import {login} from './components/login/login';
 import {signup} from './components/signup/signup';
 import {chat} from './components/chat/chat';
+import {profile} from './components/profile/profile';
 
 angular.module('Orphee', [
 	uiRouter,
@@ -41,7 +42,8 @@ angular.module('Orphee', [
 	login.name,
   head.name,
   signup.name,
-  chat.name
+  chat.name,
+  profile.name
 ])
 .directive('app', appDirective)
 .config(palettes)

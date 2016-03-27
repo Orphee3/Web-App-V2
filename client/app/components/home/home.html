@@ -14,19 +14,13 @@
   <div style="padding-left: 10px;">
     <h2>{{ 'HOME_POPULAR_SONG' | translate }}</h2>
     <hr style="color: #e6e6e6">
-    <div layout="column">
-      <div layout="row" ng-repeat="creation in vm.creations" style="font-size: 20px; border-bottom: 1px solid #e6e6e6" class="toto">
-      <div flex="5">{{$index + 1}}</div>
-      <div layout="row" layout-align="start center" flex="40">{{creation.name}}<div class="home-hide"><md-button class="md-icon-button md-primary"><i class="material-icons">play_arrow</i></md-button></div></div>
-      <div flex="20">{{creation.creator[0].name}}</div>
-      </div>
-    </div>
+    <creation-list creations="vm.creations"></creation-list>
   </div>
 
   <div style="padding-left: 10px; margin-bottom: 200px;">
     <h2>{{ 'HOME_ARTISTS' | translate }}</h2>
     <div layout="row">
-      <span layout="column" ng-repeat="artist in vm.users" layout-align="center center" style="padding-right: 10px;">
+      <span ui-sref="profile({idUser: artist._id})" layout="column" ng-repeat="artist in vm.users" layout-align="center center" style="padding-right: 10px; cursor: pointer;">
       <img ng-src="{{artist.picture}}" style="height: 100px; width: 100px;">
         <div>{{artist.name}}</div>
         
