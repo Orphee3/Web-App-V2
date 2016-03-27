@@ -1,4 +1,5 @@
 import angular from 'angular';
+import moment from 'moment';
 import {chatDirective} from './chat.directive';
 import friendMenu from './friendsmenu/friendsmenu';
 import chatContainer from './chatcontainer/chatcontainer';
@@ -27,4 +28,11 @@ export const chat = angular.module('chat', [
     });
   } 
 }))
-.factory('ChatService', chatService);
+.factory('ChatService', chatService)
+.filter('relativeDate', relativeDateFilter);
+
+function relativeDateFilter() {
+  return function(dateString) {
+    return moment(dateString).fromNow();
+  };
+}

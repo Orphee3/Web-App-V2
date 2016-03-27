@@ -1,3 +1,5 @@
+import img from '../../../../images/default.png';
+
 const chatContainerDirective = () => ({
   restrict: 'E',
   scope: {},
@@ -14,9 +16,12 @@ const chatContainerDirective = () => ({
           <div style="margin-left: 50%; margin-top: 30px; font-size:20px;">{{vm.friend.name}}</div>
         </div>
         <div class="chatbox" scroll-bottom="vm.messages" style="overflow: auto; "  >
-          <div ng-repeat="message in vm.messages" layout="row">
-            <img ng-src="{{message.creator.picture}}" style="width: 50; height: 50px;" />
-            <div>{{message.creator.name}}: {{message.message}} {{message.dateCreation}}</div>
+          <div ng-repeat="message in vm.messages" layout="row" layout-align="start center" style="margin-bottom: 10px; border-bottom: 1px solid #e6e6e6"">
+            <div style="margin-right: 10px;">{{message.dateCreation | relativeDate}}</div>
+            <img ng-if="message.creator.picture" ng-src="{{message.creator.picture}}" style="width: 50; height: 50px;" />
+            <img ng-if="!message.creator.picture" ng-src="{{vm.img}}" style="width: 50; height: 50px;" />           
+            <div style="font-size: 18px; font-weight: bold; margin-right: 10px;">{{message.creator.name}}:</div>
+            <div>{{message.message}}</div>
           </div>
         </div>
       </div>
@@ -34,6 +39,10 @@ const chatContainerDirective = () => ({
     </md-content>
   `,
   controller: class {
+    constructor() {
+      this.img = img;
+    }
+
     submit() {
       if (!this.toSend || !this.friend) return;
       console.log('send !', this.toSend);

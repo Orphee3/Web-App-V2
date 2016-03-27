@@ -21,6 +21,11 @@ const creationListDirective = () => ({
             </md-tooltip>
             {{creation.nbLikes}}<i class="material-icons">thumb_up</i>
           </md-button>
+          <md-button class="md-primary md-icon-button">
+            <md-tooltip>comment</md-tooltip>
+            <i class="material-icons">comment</i>
+          </md-button>
+          <div>{{creation.dateCreation | relativeDate}}</div>
         </div>
       </div>
     </md-content>
