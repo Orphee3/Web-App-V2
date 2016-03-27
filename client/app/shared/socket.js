@@ -15,8 +15,9 @@ const socket = ($window, API, socketFactory) => {
   
   const emit = (e, obj) => sock.emit(e, obj);
   const disconnect = () => sock.disconnect();
-  
-  return {connect, emit, disconnect};
+  const on = (e, cb) => sock.on(e, cb);
+
+  return {connect, emit, disconnect, on};
 };
 
 socket.$inject = ['$window', 'API', 'socketFactory'];

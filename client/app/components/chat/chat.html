@@ -1,5 +1,11 @@
 <md-content layout="row" style="top: 64px; height: 100%" class="home-container">
-  <chat-container flex="85" layout="column" class="chat" friend="vm.selectedFriend">
+  <chat-container 
+    flex="85" 
+    layout="column" 
+    class="chat"
+    friend="vm.selectedFriend" 
+    messages="vm.messages" 
+    on-message="vm.send(message)">
   </chat-container>
   <friends-menu 
     flex="15" 
