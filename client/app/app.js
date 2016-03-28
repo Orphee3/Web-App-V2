@@ -26,6 +26,7 @@ import {chat} from './components/chat/chat';
 import {profile} from './components/profile/profile';
 import {creation} from './components/creation/creation';
 import {moments} from './components/moments/moments';
+import {search} from './components/search/search';
 
 angular.module('Orphee', [
 	uiRouter,
@@ -47,7 +48,8 @@ angular.module('Orphee', [
   chat.name,
   profile.name,
   creation.name,
-  moments.name
+  moments.name,
+  search.name
 ])
 .directive('app', appDirective)
 .config(palettes)

@@ -14,7 +14,10 @@ class sidemenuController {
   }
 
   search() {
-    console.log("search");
+    if (!this.searchText) return;
+    console.log("search", this.searchText);
+    this.$location.url(`/search/${this.searchText}`);
+    this.searchText = '';
   }
 }
 

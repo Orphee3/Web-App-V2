@@ -5,7 +5,7 @@
       </md-toolbar>-->
       <md-content layout="column" layout-align="start center" style="background-color: rgb(242, 242, 242); height: 100%">
         <form ng-submit="vm.search()" layout="row" layout-align=""> 
-          <input type="text" placeholder="Rechercher" style="width: 85%; margin-top: 25px; height: 40px; padding-left: 20px;"></input>
+          <input ng-model="vm.searchText" type="text" placeholder="Rechercher" style="width: 85%; margin-top: 25px; height: 40px; padding-left: 20px;"></input>
           <md-button class="md-icon-button" type="submit" style="height: 40px; margin-top: 25px;"><i class="material-icons">search</i></md-button>
         </form>
         <md-button class="md-primary" ng-href="#/" style="width: 100%; font-size: 20px; text-transform: none; padding-left: 55px;">
