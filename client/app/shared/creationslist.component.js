@@ -21,7 +21,7 @@ const creationListDirective = () => ({
             </md-tooltip>
             {{creation.nbLikes}}<i class="material-icons">thumb_up</i>
           </md-button>
-          <md-button class="md-primary md-icon-button">
+          <md-button ui-sref="creation({idCreation: creation._id})" class="md-primary md-icon-button">
             <md-tooltip>comment</md-tooltip>
             <i class="material-icons">comment</i>
           </md-button>
