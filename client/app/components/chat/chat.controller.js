@@ -6,6 +6,7 @@ class chatController {
     this.Auth = Auth;
     
     this.getFriends();
+    this.getInvitations();
 
     this.Socket.on('private message', (data) => {
       if (!this.selectedFriend) {
@@ -17,11 +18,24 @@ class chatController {
         this.messages.push(data.message);
       }
     });
+
+    this.Socket.on('friend', () => {
+      this.getInvitations();
+    });
+
+    this.Socket.on('newFriend', () => {
+      this.getFriends();
+    });
   }
   
   getFriends() {
     this.Users.getFriends()
       .then(friends => this.friends = friends);
+  }
+
+  getInvitations() {
+    this.Users.getFriendInvitation()
+      .then(invitations => this.invitations = invitations);
   }
 
   openChat(friend) {
@@ -36,9 +50,24 @@ class chatController {
     this.messages.push({creator: {name: user.name, picture: user.picture}, message});
   }
 
+  acceptFriend(friend) {
+    this.Users.acceptFriend(friend._id)
+      .then(() => this.getInvitations())
+      .then(() => this.getFriends())
+  }
+
   deleteFriend(friend) {
     this.Users.deleteFriend(friend._id)
       .then(() => this.getFriends());
+  }
+
+  sendInvitation(email) {
+    this.Users.get()
+      .then((users) => (users.find(user => user.username == email)))
+      .then(user => {
+        if (!user) return;
+        this.Users.askFriend(user._id);
+      });
   }
 }
 

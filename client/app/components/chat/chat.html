@@ -10,9 +10,12 @@
   <friends-menu 
     flex="15" 
     layout="column" 
-    friends="vm.friends" 
+    friends="vm.friends"
+    invitations="vm.invitations"
     on-open-chat="vm.openChat(friend)"
+    on-accept-friend="vm.acceptFriend(friend)"
     on-delete-friend="vm.deleteFriend(friend)"
+    on-send-invitation="vm.sendInvitation(email)"
     style="border-left: 1px solid black">
   </friends-menu>
 </md-content>

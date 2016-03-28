@@ -46,8 +46,25 @@ const users = ($window, $http, API) => {
     return $http.get(`${API.url}/api/removeFriend/${idFriend}`)
       .then(({data}) => data);
   };
+  
+  const askFriend = (idFriend) => {
+    const id = JSON.parse($window.localStorage.user)._id;
+    if (id == idFriend) return;
+    $http.get(`${API.url}/api/askfriend/${idFriend}`)
+  }
 
-  return {get, getFriends, getById, getCreations, likeCreation, dislikeCreation, deleteFriend};
+  const acceptFriend = (idUser) => {
+    return $http.get(`${API.url}/api/acceptfriend/${idUser}`)
+      .then(({data}) => data);
+  }
+
+  const getFriendInvitation = () => {
+    const id = JSON.parse($window.localStorage.user)._id;
+    return $http.get(`${API.url}/api/user/${id}/news`)
+      .then(({data}) => data.filter(n => n.type == 'friend'));
+  }
+
+  return {get, getFriends, getById, getCreations, likeCreation, dislikeCreation, deleteFriend, askFriend, acceptFriend, getFriendInvitation};
 };
 
 users.$inject = ['$window', '$http', 'API'];

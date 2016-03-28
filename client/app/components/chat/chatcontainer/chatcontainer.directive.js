@@ -32,7 +32,7 @@ const chatContainerDirective = () => ({
           <input ng-model="vm.toSend" type="text" style="width: 1000px;"/>
         </md-input-container>
         <md-button type="submit" class="md-primary md-fab">
-          <md-icon><i class="materials-icon">send</i></md-icon>
+          <i class="material-icons" style="margin-top: 16px; margin-left: 8px;">send</i>
         </md-button>
       </form>
       
