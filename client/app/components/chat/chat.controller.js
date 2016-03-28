@@ -1,20 +1,17 @@
 class chatController {
-  constructor(Users, ChatService, Socket, Auth) {
+  constructor(Users, ChatService, Socket, Auth, $window) {
     this.Users = Users;
     this.ChatService = ChatService;
     this.Socket = Socket;
     this.Auth = Auth;
+    this.$window = $window;
     
     this.getFriends();
     this.getInvitations();
 
     this.Socket.on('private message', (data) => {
-      if (!this.selectedFriend) {
-
-
-        return;
-      } 
-      if (JSON.stringify(data.source._id) === JSON.stringify(this.selectedFriend)) {
+      if (!this.selectedFriend) return;
+      if (JSON.stringify(data.source._id) === JSON.stringify(this.selectedFriend._id)) {
         this.messages.push(data.message);
       }
     });
@@ -40,6 +37,7 @@ class chatController {
 
   openChat(friend) {
     this.selectedFriend = friend;
+    delete this.$window.localStorage[friend._id];
     this.ChatService.getPrivateChat(friend._id)
       .then(messages => this.messages = messages);
   }
@@ -71,6 +69,6 @@ class chatController {
   }
 }
 
-chatController.$inject = ['Users', 'ChatService', 'Socket', 'Auth'];
+chatController.$inject = ['Users', 'ChatService', 'Socket', 'Auth', '$window'];
 
 export {chatController};

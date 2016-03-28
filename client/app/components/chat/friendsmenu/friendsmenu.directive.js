@@ -1,10 +1,11 @@
 import img from '../../../../images/default.png';
 
 class friendMenu {
-  constructor(Users, $mdDialog, $mdToast) {
+  constructor(Users, $mdDialog, $mdToast, $window) {
     this.Users = Users;
     this.$mdDialog = $mdDialog;
     this.$mdToast = $mdToast;
+    this.$window = $window;
     this.img = img;
     console.log('friends via component', this.friends);
   }
@@ -32,15 +33,20 @@ class friendMenu {
     this.onSendInvitation({email: this.email});
     this.email = '';
   }
+
+  haveMessage(key) {
+    return this.$window.localStorage[key];
+  }
 }
 
-friendMenu.$inject = ['Users', '$mdDialog', '$mdToast'];
+friendMenu.$inject = ['Users', '$mdDialog', '$mdToast', '$window'];
 
 const friendsMenuDirective = () => ({
   template: `
     <div ng-if="vm.friends.length !== 0" layout="row" layout-align="center center" style="background-color: #eeeeee; font-size: 20px; height: 40px">Mes Amis</div>
     <div layout="row" layout-align="center center" ng-repeat="friend in vm.friends">
-      <div layout="row" ng-click="vm.onOpenChat({friend: friend})">
+      <div layout="row" layout-align="center center" ng-click="vm.onOpenChat({friend: friend})">
+        <i ng-if="vm.haveMessage(friend._id)" class="material-icons">email</i>
         <img ng-if="friend.picture" ng-src="{{friend.picture}}" style="height: 50px; width: 50px; margin-right: 10px" />
         <img ng-if="!friend.picture" ng-src="{{vm.img}}" style="height: 50px; width: 50px; margin-right: 10px" />
         {{friend.name}}
@@ -63,7 +69,7 @@ const friendsMenuDirective = () => ({
     </div>
 
     <div layout="row" layout-align="center center" style="background-color: #eeeeee; font-size: 20px; height: 40px">Ajouter des amis</div>
-    <form ng-submit="vm.sendInvitation()">
+    <form layout="column" layout-align="center center" ng-submit="vm.sendInvitation()">
       <md-input-container>
         <label>Enter email</label>
         <input type="text" ng-model="vm.email"/>

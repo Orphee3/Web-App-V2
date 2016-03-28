@@ -8,6 +8,9 @@ const socket = ($window, API, socketFactory) => {
       const ioSocket = io.connect(`${API.url}?token=${token}`);
       sock = socketFactory({ ioSocket });
       sock.emit('subscribe', {channel: id});
+      sock.on('private message', (data) => {
+        $window.localStorage[data.source._id] = 'message';
+      });
     }
   };
   
