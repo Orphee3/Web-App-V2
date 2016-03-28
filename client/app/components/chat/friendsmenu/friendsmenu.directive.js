@@ -52,7 +52,7 @@ const friendsMenuDirective = () => ({
         <div flex="20" ng-click="vm.onOpenChat({friend: friend})" style="cursor: pointer">{{friend.name}}</div>
    
       <md-button ng-click="vm.deleteFriend($event, friend)" class="md-primary md-fab">
-        <md-tooltip md-direction="right">Supprimer</md-tooltip>
+        <md-tooltip md-direction="bottom">Supprimer</md-tooltip>
         <md-icon><i class="material-icons">clear</i></md-icon>
       </md-button>
     </div>
@@ -63,7 +63,7 @@ const friendsMenuDirective = () => ({
       <img ui-sref="profile({idUser: invit.userSource._id})" ng-if="!invit.userSource.picture" ng-src="{{vm.img}}" style="height: 50px; width: 50px; margin-right: 10px; cursor; pointer">
       <div flex="20" ui-sref="profile({idUser: invit.userSource._id})" style="cursor: pointer">{{invit.userSource.name}}</div>
       <md-button ng-click="vm.onAcceptFriend({friend: invit.userSource})" class="md-primary md-fab"">
-        <md-tooltip md-direction="right">Accepter</md-tooltip>
+        <md-tooltip md-direction="bottom">Accepter</md-tooltip>
         <md-icon><i class="material-icons">done</i></md-icon>
       </md-button>
     </div>

@@ -57,6 +57,10 @@ class chatController {
   deleteFriend(friend) {
     this.Users.deleteFriend(friend._id)
       .then(() => this.getFriends());
+    if (this.selectedFriend && this.selectedFriend._id == friend._id) {
+      this.selectedFriend = null;
+      this.messages = null;
+    } 
   }
 
   sendInvitation(email) {

@@ -13,7 +13,14 @@ const creationListDirective = () => ({
           <div flex="5">{{$index + 1}}</div>
           <img ng-if="creation.picture" ng-src="{{creation.picture}}" style="height: 100px; width: 100px">
           <img ng-if="!creation.picture" ng-src="{{vm.guitar}}" style="height: 100px; width: 100px; margin-right: 20px;">
-          <div layout="row" layout-align="start center" flex="40">{{creation.name}}<div class="home-hide"><md-button class="md-icon-button md-primary"><i class="material-icons">play_arrow</i></md-button></div></div>
+          <div layout="row" layout-align="start center" flex="40">
+            <div ui-sref="creation({idCreation: creation._id})" style="cursor: pointer">{{creation.name}}</div>
+            <div class="home-hide">
+              <md-button class="md-icon-button md-primary">
+                <i class="material-icons">play_arrow</i>
+              </md-button>
+            </div>
+          </div>
           <div flex="20" ui-sref="profile({idUser: creation.creator[0]._id})" style="cursor: pointer">{{creation.creator[0].name}}</div>
           <md-button class="md-primary md-icon-button home-hide" ng-click="vm.handleLike(creation)">
             <md-tooltip md-direction="left" ng-if="vm.isLog()">
