@@ -64,7 +64,16 @@ const users = ($window, $http, API) => {
       .then(({data}) => data.filter(n => n.type == 'friend'));
   }
 
-  return {get, getFriends, getById, getCreations, likeCreation, dislikeCreation, deleteFriend, askFriend, acceptFriend, getFriendInvitation};
+  const getFlux = () => {
+    const id = JSON.parse($window.localStorage.user)._id;
+    return getFriends()
+      .then(friends => {
+        return $http.get(`${API.url}/api/user/${id}/flux`)
+          .then(({data}) => data.filter(f => f.userSource && f.media && friends.find(friend => friend._id == f.userSource._id)));
+      });
+  }
+
+  return {get, getFriends, getById, getCreations, likeCreation, dislikeCreation, deleteFriend, askFriend, acceptFriend, getFriendInvitation, getFlux};
 };
 
 users.$inject = ['$window', '$http', 'API'];

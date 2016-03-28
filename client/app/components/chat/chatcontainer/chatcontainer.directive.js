@@ -13,7 +13,7 @@ const chatContainerDirective = () => ({
     <md-content>
       <div layout="column" style="height: 800px;">
         <div layout="row" layout="center center" class="header" style="background-color: #eeeeee; height: 100px;">
-          <div style="margin-left: 50%; margin-top: 30px; font-size:20px;">{{vm.friend.name}}</div>
+          <div ui-sref="profile({idUser: vm.friend._id})" style="margin-left: 50%; margin-top: 30px; font-size:20px; cursor: pointer">{{vm.friend.name}}</div>
         </div>
         <div class="chatbox" scroll-bottom="vm.messages" style="overflow: auto; "  >
           <div ng-repeat="message in vm.messages" layout="row" layout-align="start center" style="margin-bottom: 10px; border-bottom: 1px solid #e6e6e6"">
