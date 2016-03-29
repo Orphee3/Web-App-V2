@@ -1,3 +1,15 @@
-<md-content ng-show="vm.showPlayer()" style="height: 90px; background-color: rgb(230, 230, 230); position: fixed; bottom: 0; width: 100%; z-index: 2">
-  hello world ! ezfezez ez ze ezzedzedze ezdze 
+<md-content ng-show="vm.showPlayer()" style="height: 90px; background-color: rgb(230, 230, 230); position: fixed; bottom: 0; width: 100%; z-index: 2" layout="row" layout-align="center center">
+    <md-button class="md-icon-button md-primary" aria-label="prev">
+        <i class="material-icons md-36">skip_previous</i>
+    </md-button>
+
+    <md-button ng-click="vm.playStop()" class="md-icon-button md-primary" aria-label="play">
+        <i class="material-icons md-36">{{vm.getImg()}}</i>
+    </md-button>
+
+    <md-button class="md-icon-button md-primary" aria-label="next">
+        <i class="material-icons md-36">skip_next</i>
+    </md-button>
+
+    <md-slider flex class="md-primary" min="0" max="100" ng-mouseup="vm.mouseUp()" ng-mousedown="vm.mouseDown()" ng-model="vm.playerTime" aria-label="player"></md-slider>
 </md-content>

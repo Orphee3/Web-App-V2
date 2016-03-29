@@ -17,9 +17,13 @@
           <span layout="row" layout-align="start center"><i class="material-icons" style="padding-right: 10px;">room</i>Moments</span>
         </md-button>
         <md-divider style="width: 85%"></md-divider>
-        <md-button class="md-primary" style="width: 100%; font-size: 20px; text-transform: none; padding-left: 55px;">
+        <md-button ng-click="vm.dialogPlaylist()" class="md-primary" style="width: 100%; font-size: 20px; text-transform: none; padding-left: 55px;">
           <span layout="row" layout-align="start center"><i class="material-icons" style="padding-right: 10px;">playlist_add</i>Nouvelle playlist</span>
         </md-button>
+        <div layout="row" ui-sref="playlists({index: $index})" ng-repeat="playlist in vm.playlists" style="cursor: pointer;">
+          <i class="material-icons">queue_music</i>
+          <div>{{playlist.name}}</div>
+        </div>
       </md-content>
 
   </md-sidenav>

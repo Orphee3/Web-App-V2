@@ -16,9 +16,17 @@ const creationListDirective = () => ({
           <div layout="row" layout-align="start center" flex="40">
             <div ui-sref="creation({idCreation: creation._id})" style="cursor: pointer">{{creation.name}}</div>
             <div class="home-hide">
-              <md-button class="md-icon-button md-primary">
+              <md-button ng-click="vm.play(creation.url)" class="md-icon-button md-primary">
                 <i class="material-icons">play_arrow</i>
               </md-button>
+              <md-menu md-offset="0 30">
+                <md-button ng-click="vm.getPlaylists(); $mdOpenMenu($event)" class="md-icon-button md-primary">
+                  <i class="material-icons">playlist_add</i>
+                </md-button>
+                <md-menu-content width="3">
+                  <md-button ng-repeat="playlist in vm.playlists" ng-click="vm.addToPlaylist($index, creation)">{{playlist.name}}</md-button>
+                </md-menu-content>
+              </md-menu>
             </div>
           </div>
           <div flex="20" ui-sref="profile({idUser: creation.creator[0]._id})" style="cursor: pointer">{{creation.creator[0].name}}</div>
@@ -42,9 +50,11 @@ const creationListDirective = () => ({
 });
 
 class controller {
-  constructor(Auth, Users) {
+  constructor(Auth, Users, Audio, Playlists) {
     this.Auth = Auth;
     this.Users = Users;
+    this.Audio = Audio;
+    this.Playlists = Playlists;
 
     this.guitar = guitar;
   }
@@ -74,11 +84,24 @@ class controller {
     }
   }
 
+  play(url) {
+    this.Audio.play(url);
+  }
+
+  getPlaylists() {
+    this.Playlists.get().then(playlists => this.playlists = playlists);
+  }
+
+  addToPlaylist(index, creation) {
+    this.Playlists.addCreationToPlaylist(index, creation)
+      .then(() => this.getPlaylists());
+  }
+
   isLog() {
     return this.Auth.isLog();
   }
 }
 
-controller.$inject = ['Auth', 'Users', '$window'];
+controller.$inject = ['Auth', 'Users', 'Audio', 'Playlists'];
 
 export default creationListDirective;

@@ -27,6 +27,7 @@ import {profile} from './components/profile/profile';
 import {creation} from './components/creation/creation';
 import {moments} from './components/moments/moments';
 import {search} from './components/search/search';
+import {playlistModule} from './components/playlists/playlists';
 
 angular.module('Orphee', [
 	uiRouter,
@@ -49,7 +50,8 @@ angular.module('Orphee', [
   profile.name,
   creation.name,
   moments.name,
-  search.name
+  search.name,
+  playlistModule.name
 ])
 .directive('app', appDirective)
 .config(palettes)

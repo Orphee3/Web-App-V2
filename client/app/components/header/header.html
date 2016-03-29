@@ -2,7 +2,7 @@
   <div class="md-toolbar-tools">
     <a layout="row" layout-align="center center" ui-sref="home">
       <img ng-src="{{vm.logo.orphee}}" style="height: 50px; width: 50px;">
-      Orphée
+      <div style="color: white">Orphée</div>
     </a>
     <span flex></span>
     <a ng-if="!vm.isLog()" ui-sref="login">Se connecter</a>
@@ -12,7 +12,7 @@
       </div>
       
       <md-menu-content width="3">
-        <md-menu-item md-menu-align-target ng-click="vm.logout()">Se déconnecter</md-menu-item>
+        <md-menu-item md-menu-align-target ng-click="vm.logout()"><div style="color: white">Se déconnecter</div></md-menu-item>
       </md-menu-content>
     </md-menu>
   </div>

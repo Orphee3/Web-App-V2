@@ -35,7 +35,7 @@ gulp.task('serve', function() {
 
 gulp.task('watch', function() {
 	gulp.watch(paths.app, ['build', browser.reload]);
-	gulp.watch(paths.toCopy, ['copy', browser.reload]);
+	gulp.watch(paths.toCopy, ['copyEntryPoint', browser.reload]);
 });
 
 gulp.task('deploy', ['build', 'copyEntryPoint'], function() {
