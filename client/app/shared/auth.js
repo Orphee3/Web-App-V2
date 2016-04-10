@@ -65,6 +65,7 @@ const auth = ($window, $http, $q, $auth, API, Socket) => {
       log = true;
       $window.localStorage.user = JSON.stringify(data.user);
       $auth.setToken(data.token);
+      Socket.connect();
     });
   };
 

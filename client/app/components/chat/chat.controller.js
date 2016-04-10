@@ -1,11 +1,13 @@
 class chatController {
-  constructor(Users, ChatService, Socket, Auth, $window) {
+  constructor(Users, ChatService, Socket, Auth, $window, $location) {
     this.Users = Users;
     this.ChatService = ChatService;
     this.Socket = Socket;
     this.Auth = Auth;
     this.$window = $window;
     
+    if (!this.Auth.isLog()) $location.url('/');
+
     this.getFriends();
     this.getInvitations();
 
@@ -73,6 +75,6 @@ class chatController {
   }
 }
 
-chatController.$inject = ['Users', 'ChatService', 'Socket', 'Auth', '$window'];
+chatController.$inject = ['Users', 'ChatService', 'Socket', 'Auth', '$window', '$location'];
 
 export {chatController};
