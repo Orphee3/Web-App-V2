@@ -23,8 +23,14 @@ const playlist = ($window, $q) => {
     if (!$window.localStorage.playlists) return $q.reject('err');
     const playlists = JSON.parse($window.localStorage.playlists);
     if (!playlists[index]) return $q.reject('err');
-    if (playlists[index].playlists.find(crea => crea._id == creation._id)) return $q.reject('err');
-    playlists[index].playlists.push(creation);
+    playlists[index].playlists.push({
+      _id: creation._id,
+      name: creation.name,
+      nbComments: creation.nbComments,
+      nbLikes: creation.nbLikes,
+      creator: creation.creator,
+      dateCreation: creation.dateCreation
+    });
     return $q.when($window.localStorage.playlists = JSON.stringify(playlists));
   };
 

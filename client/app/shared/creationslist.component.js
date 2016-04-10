@@ -82,10 +82,18 @@ class controller {
 
     if (idx !== -1) {
       this.Users.dislikeCreation(creation._id)
-        .then(() => this.creations[creationIdx].nbLikes -= 1);
+        .then(() => {
+          this.creations.forEach(crea => {
+            if (crea._id === creation._id) crea.nbLikes -= 1;
+          });
+        });
     } else {
       this.Users.likeCreation(creation._id)
-        .then(() => this.creations[creationIdx].nbLikes +=1);
+        .then(() => {
+          this.creations.forEach(crea => {
+            if (crea._id === creation._id) crea.nbLikes += 1;
+          });
+        });
     }
   }
 
@@ -99,7 +107,6 @@ class controller {
 
   addToPlaylist(index, creation) {
     this.Playlists.addCreationToPlaylist(index, creation)
-      .then(() => this.getPlaylists());
   }
 
   isLog() {
