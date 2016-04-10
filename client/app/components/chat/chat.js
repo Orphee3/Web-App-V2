@@ -1,5 +1,6 @@
 import angular from 'angular';
-import moment from 'moment';
+//import moment from 'moment';
+import moment from 'moment/min/moment-with-locales';
 import {chatDirective} from './chat.directive';
 import friendMenu from './friendsmenu/friendsmenu';
 import chatContainer from './chatcontainer/chatcontainer';
@@ -31,8 +32,10 @@ export const chat = angular.module('chat', [
 .factory('ChatService', chatService)
 .filter('relativeDate', relativeDateFilter);
 
-function relativeDateFilter() {
+function relativeDateFilter($translate) {
   return function(dateString) {
+    console.log('use language', $translate.use());
+    moment.locale($translate.use());
     return moment(dateString).fromNow();
   };
 }

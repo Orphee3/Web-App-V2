@@ -1,10 +1,10 @@
 class sidemenuController {
-  constructor($location, Auth, $mdDialog, Playlists, $interval) {
+  constructor($location, Auth, $mdDialog, Playlists, $interval, $translate) {
     this.$location = $location;
     this.Auth = Auth;
     this.$mdDialog = $mdDialog;
     this.Playlists = Playlists;
-
+    this.$translate = $translate;
 
     $interval(() => {
       Playlists.get()
@@ -30,12 +30,30 @@ class sidemenuController {
   }
 
   dialogPlaylist(ev) {
+    const obj = {
+      fr: {
+        title: 'Choisissez un titre pour votre playlist',
+        placeholder: 'Nom',
+        ariaLabel: 'Playlist name',
+        ok: 'Enrregistrer',
+        cancel: 'Annuler'
+      },
+      en: {
+        title: 'Chose a name for your playlist',
+        placeholder: 'Name',
+        ariaLabel: 'Playlist name',
+        ok: 'Confirm',
+        cancel: 'Cancel'
+      }
+    }
+    const  current = obj[this.$translate.use()];
+
     const result = this.$mdDialog.prompt()
-      .title('Choisissez un titre pour votre playlist')
-      .placeholder('Nom')
-      .ariaLabel('Playlist name')
-      .ok('Enregistrer')
-      .cancel('Annuler');
+      .title(current.title)
+      .placeholder(current.placeholder)
+      .ariaLabel(current.ariaLabel)
+      .ok(current.ok)
+      .cancel(current.cancel);
 
     this.$mdDialog.show(result)
       .then(name => this.Playlists.add(name))
@@ -44,6 +62,6 @@ class sidemenuController {
   }
 }
 
-sidemenuController.$inject = ['$location', 'Auth', '$mdDialog', 'Playlists', '$interval'];
+sidemenuController.$inject = ['$location', 'Auth', '$mdDialog', 'Playlists', '$interval', '$translate'];
 
 export {sidemenuController};

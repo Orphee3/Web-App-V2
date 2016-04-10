@@ -5,20 +5,20 @@
       </md-toolbar>-->
       <md-content layout="column" layout-align="start center" style="background-color: rgb(242, 242, 242); height: 100%">
         <form ng-submit="vm.search()" layout="row" layout-align=""> 
-          <input ng-model="vm.searchText" type="text" placeholder="Rechercher" style="width: 85%; margin-top: 25px; height: 40px; padding-left: 20px;"></input>
+          <input ng-model="vm.searchText" type="text" placeholder="{{'SIDENAV_SEARCH' | translate}}" style="width: 85%; margin-top: 25px; height: 40px; padding-left: 20px;"></input>
           <md-button class="md-icon-button" type="submit" style="height: 40px; margin-top: 25px;"><i class="material-icons">search</i></md-button>
         </form>
         <md-button class="md-primary" ng-href="#/" style="width: 100%; font-size: 20px; text-transform: none; padding-left: 55px;">
-          <span layout="row" layout-align="start center"><i class="material-icons" style="padding-right: 10px;">explore</i>Explorer</span>
+          <span layout="row" layout-align="start center"><i class="material-icons" style="padding-right: 10px;">explore</i>{{ 'SIDENAV_EXPLORE' | translate }}</span>
         </md-button>
         <md-button ng-if="vm.isLog()" class="md-primary" ng-href="#/chat" style="width: 100%; font-size: 20px; text-transform: none; padding-left: 55px;">
-          <span layout="row" layout-align="start center"><i class="material-icons" style="padding-right: 10px;">people</i>Friends</span>
+          <span layout="row" layout-align="start center"><i class="material-icons" style="padding-right: 10px;">people</i>{{ 'SIDENAV_FRIENDS' | translate }}</span>
         </md-button><md-button ng-if="vm.isLog()" class="md-primary" ng-href="#/moments" style="width: 100%; font-size: 20px; text-transform: none; padding-left: 55px;">
           <span layout="row" layout-align="start center"><i class="material-icons" style="padding-right: 10px;">room</i>Moments</span>
         </md-button>
         <md-divider style="width: 85%"></md-divider>
         <md-button ng-click="vm.dialogPlaylist()" class="md-primary" style="width: 100%; font-size: 20px; text-transform: none; padding-left: 55px;">
-          <span layout="row" layout-align="start center"><i class="material-icons" style="padding-right: 10px;">playlist_add</i>Nouvelle playlist</span>
+          <span layout="row" layout-align="start center"><i class="material-icons" style="padding-right: 10px;">playlist_add</i>{{ 'SIDENAV_PLAYLIST' | translate }}</span>
         </md-button>
         <div layout="row" ui-sref="playlists({index: $index})" ng-repeat="playlist in vm.playlists" style="cursor: pointer;">
           <i class="material-icons">queue_music</i>

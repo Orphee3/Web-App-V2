@@ -37,7 +37,7 @@ const creationListDirective = () => ({
             {{creation.nbLikes}}<i class="material-icons">thumb_up</i>
           </md-button>
           <md-button ui-sref="creation({idCreation: creation._id})" class="md-primary md-icon-button">
-            <md-tooltip>comment</md-tooltip>
+            <md-tooltip>{{'CREATIONLIST_COMMENT' | translate}}</md-tooltip>
             <i class="material-icons">comment</i>
           </md-button>
           <div>{{creation.dateCreation | relativeDate}}</div>
@@ -50,11 +50,12 @@ const creationListDirective = () => ({
 });
 
 class controller {
-  constructor(Auth, Users, Audio, Playlists) {
+  constructor(Auth, Users, Audio, Playlists, $translate) {
     this.Auth = Auth;
     this.Users = Users;
     this.Audio = Audio;
     this.Playlists = Playlists;
+    this.$translate = $translate;
 
     this.guitar = guitar;
   }
@@ -66,7 +67,11 @@ class controller {
   }
 
   getToolTip(creation) {
-    return this.alreadyLike(creation) ? 'I don\'t like anymore' : 'Like';
+    if (this.$translate.use() === 'en') {
+      return this.alreadyLike(creation) ? 'I don\'t like anymore' : 'Like';
+    } else if (this.$translate.use() === 'fr') {
+      return this.alreadyLike(creation) ? 'Je n\'aime plus' : 'J\'aime';
+    }
   }
 
   handleLike(creation) {
@@ -102,6 +107,6 @@ class controller {
   }
 }
 
-controller.$inject = ['Auth', 'Users', 'Audio', 'Playlists'];
+controller.$inject = ['Auth', 'Users', 'Audio', 'Playlists', '$translate'];
 
 export default creationListDirective;

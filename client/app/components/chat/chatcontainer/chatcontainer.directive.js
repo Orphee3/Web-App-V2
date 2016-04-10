@@ -28,7 +28,7 @@ const chatContainerDirective = () => ({
       
       <form ng-submit="vm.submit()" class="footer" style="background-color: #eeeeee; height: 100px; width: 100%">
         <md-input-container>
-          <label>Type message ...</label>
+          <label>{{'CHAT_TYPE' | translate}}</label>
           <input ng-model="vm.toSend" type="text" style="width: 1000px;"/>
         </md-input-container>
         <md-button type="submit" class="md-primary md-fab">

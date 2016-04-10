@@ -1,5 +1,26 @@
 export const languages = ($translateProvider) => {
 		$translateProvider.translations('en', {
+      HEADER_LOGIN: 'Log in',
+      HEADER_LOGOUT: 'Log out',
+
+      SIDENAV_EXPLORE: 'Explore',
+      SIDENAV_FRIENDS: 'Friends',
+      SIDENAV_PLAYLIST: 'New playlist',
+      SIDENAV_SEARCH: 'Search',
+
+      CHAT_FRIENDS: 'Friends',
+      CHAT_INVITATIONS: 'Friend Request',
+      CHAT_ADDFRIENDS: 'Add New Friends',
+      CHAT_REMOVE: 'Remove',
+      CHAT_ACCEPT: 'Accept',
+      CHAT_EMAIL: 'Enter email',
+      CHAT_SEND: 'Send Invatation',
+      CHAT_TYPE: 'Type message ...',
+
+      CREATIONLIST_COMMENT: 'comment',
+
+      PROFILE_NOCREATIONS: 'does not have creations',
+
       HOME_POPULAR_SONG: 'Popular song',
       HOME_ARTISTS: 'Artists',
 
@@ -31,6 +52,27 @@ export const languages = ($translateProvider) => {
     });
 
 		$translateProvider.translations('fr', {
+      HEADER_LOGIN: 'Se connecter',
+      HEADER_LOGOUT: 'Se déconnecter',
+
+      SIDENAV_EXPLORE: 'Explorer',
+      SIDENAV_FRIENDS: 'Amis',
+      SIDENAV_PLAYLIST: 'Nouvelle playlist',
+      SIDENAV_SEARCH: 'Rechercher',
+
+      CHAT_FRIENDS: 'Mes Amis',
+      CHAT_INVITATIONS: 'Mes Invitations',
+      CHAT_ADDFRIENDS: 'Ajouter des amis',
+      CHAT_REMOVE: 'Supprimer',
+      CHAT_ACCEPT: 'Accepter',
+      CHAT_EMAIL: 'Entrer email',
+      CHAT_SEND: 'Envoyer l\'invitation',
+      CHAT_TYPE: 'Message ...',
+
+      CREATIONLIST_COMMENT: 'commentaire',
+
+      PROFILE_NOCREATIONS: 'n\'a pas de créations',
+
       HOME_POPULAR_SONG: 'Morceaux les plus populaires',
       HOME_ARTISTS: 'Artistes',
 

@@ -8,7 +8,7 @@ const playlistsDirective = () => ({
       <div style="height: 200px; background-color: #eeeeee; font-size: 25px" layout="row" layout-align="center center">
         {{vm.selectedPlaylist.name}}
         <md-button ng-click="vm.deletePlaylist()" class="md-primary md-fab">
-          <md-tooltip md-direction="bottom">Supprimer</md-tooltip>
+          <md-tooltip md-direction="bottom">{{'CHAT_REMOVE' | translate}}</md-tooltip>
         <md-icon><i class="material-icons">clear</i></md-icon>
       </md-button>
       </div>

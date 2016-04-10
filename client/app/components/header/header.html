@@ -5,14 +5,16 @@
       <div style="color: white">Orphée</div>
     </a>
     <span flex></span>
-    <a ng-if="!vm.isLog()" ui-sref="login" style="color: white">Se connecter</a>
+    <div ng-click="vm.changeLanguage('fr')" style="margin-right: 15px">fr</div>
+    <div ng-click="vm.changeLanguage('en')" style="margin-right: 15px">en</div>
+    <a ng-if="!vm.isLog()" ui-sref="login" style="color: white">{{ 'HEADER_LOGIN' | translate }}</a>
     <md-menu md-offset="0 60" ng-if="vm.isLog()">
       <div layout="row" layout-align="center center" ng-click="$mdOpenMenu($event)" style="cursor: pointer;">
         <img md-menu-origin class="header-user-picture" ng-src="{{vm.user.picture}}">{{vm.user.name}}
       </div>
       
       <md-menu-content width="3">
-        <md-menu-item md-menu-align-target ng-click="vm.logout()"><div>Se déconnecter</div></md-menu-item>
+        <md-menu-item md-menu-align-target ng-click="vm.logout()"><div>{{ 'HEADER_LOGOUT' | translate }}</div></md-menu-item>
       </md-menu-content>
     </md-menu>
   </div>
