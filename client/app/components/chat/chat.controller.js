@@ -25,6 +25,14 @@ class chatController {
     this.Socket.on('newFriend', () => {
       this.getFriends();
     });
+
+    this.Socket.on('removeFriend', (obj) => {
+      this.getFriends();
+      if (this.selectedFriend && this.selectedFriend._id == obj.userSource) {
+        this.selectedFriend = null;
+        this.messages = null;
+      } 
+    });
   }
   
   getFriends() {
