@@ -6,6 +6,9 @@ const playlistsDirective = () => ({
   template: `
     <md-content layout="column" style="top: 64px; height: 100%; margin-bottom: 150px;" class="home-container">
       <div style="height: 200px; background-color: #eeeeee; font-size: 25px" layout="row" layout-align="center center">
+        <md-button ng-click="vm.playPlaylist()" class="md-icon-button md-primary">
+          <i class="material-icons md-36">play_arrow</i>
+        </md-button>
         {{vm.selectedPlaylist.name}}
         <md-button ng-click="vm.deletePlaylist()" class="md-primary md-fab">
           <md-tooltip md-direction="bottom">{{'CHAT_REMOVE' | translate}}</md-tooltip>
@@ -20,11 +23,12 @@ const playlistsDirective = () => ({
 });
 
 class controller {
-  constructor($stateParams, $location, Playlists) {
+  constructor($stateParams, $location, Playlists, Audio) {
     console.log('hello from playlists directive');
     this.Playlists = Playlists;
     this.$location = $location;
     this.$stateParams = $stateParams;
+    this.Audio = Audio;
 
     this.Playlists.get()
       .then(playlists => this.playlists = playlists)
@@ -46,8 +50,12 @@ class controller {
       .then(playlists => this.playlists = playlists)
       .then(() => this.selectedPlaylist = this.playlists[this.$stateParams.index])
   }
+
+  playPlaylist() {
+    this.Audio.playPlaylist(this.selectedPlaylist.playlists);
+  }
 }
 
-controller.$inject = ['$stateParams', '$location', 'Playlists'];
+controller.$inject = ['$stateParams', '$location', 'Playlists', 'Audio'];
 
 export default playlistsDirective;

@@ -29,7 +29,8 @@ const playlist = ($window, $q) => {
       nbComments: creation.nbComments,
       nbLikes: creation.nbLikes,
       creator: creation.creator,
-      dateCreation: creation.dateCreation
+      dateCreation: creation.dateCreation,
+      url: creation.url
     });
     return $q.when($window.localStorage.playlists = JSON.stringify(playlists));
   };

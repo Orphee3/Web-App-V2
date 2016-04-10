@@ -117,11 +117,6 @@ class controller {
     this.Playlists.addCreationToPlaylist(index, creation)
   }
 
-  /*removeCreationFromPlaylist(creation) {
-    console.log('creation', creation);
-    console.log('INDEX', this.$stateParams.index)
-  }*/
-
   showAddToPlaylist() {
     let path = this.$location.path();
     path = path.split('/');

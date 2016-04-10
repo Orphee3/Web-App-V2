@@ -1,5 +1,5 @@
 <md-content ng-show="vm.showPlayer()" style="height: 90px; background-color: rgb(230, 230, 230); position: fixed; bottom: 0; width: 100%; z-index: 2" layout="row" layout-align="center center">
-    <md-button class="md-icon-button md-primary" aria-label="prev">
+    <md-button ng-click="vm.prev()" class="md-icon-button md-primary" aria-label="prev">
         <i class="material-icons md-36">skip_previous</i>
     </md-button>
 
@@ -7,7 +7,7 @@
         <i class="material-icons md-36">{{vm.getImg()}}</i>
     </md-button>
 
-    <md-button class="md-icon-button md-primary" aria-label="next">
+    <md-button ng-click="vm.next()" class="md-icon-button md-primary" aria-label="next">
         <i class="material-icons md-36">skip_next</i>
     </md-button>
 

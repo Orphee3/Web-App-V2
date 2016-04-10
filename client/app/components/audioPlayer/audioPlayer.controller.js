@@ -32,7 +32,13 @@ class audioPlayerController {
     MIDI.Player.resume();
   }
 
+  next() {
+    this.Audio.next();
+  }
 
+  prev() {
+    this.Audio.prev();
+  }
 
   playStop() {
     this.Audio.playStop();
