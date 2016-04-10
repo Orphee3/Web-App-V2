@@ -34,7 +34,19 @@ const playlist = ($window, $q) => {
     return $q.when($window.localStorage.playlists = JSON.stringify(playlists));
   };
 
-  return {get, add, del, addCreationToPlaylist};
+  const removeCreationFromPlaylist = (index, creationIndex) => {
+    if (!$window.localStorage.playlists) return $q.reject('err');
+    const playlists = JSON.parse($window.localStorage.playlists);
+    if (!playlists[index]) return $q.reject('err');
+    try {
+      playlists[index].playlists.splice(creationIndex, 1);
+      return $q.when($window.localStorage.playlists = JSON.stringify(playlists));
+    } catch (e) {
+      return $q.reject('err');
+    }
+  };
+
+  return {get, add, del, addCreationToPlaylist, removeCreationFromPlaylist};
 }
 
 playlist.$inject = ['$window', '$q'];

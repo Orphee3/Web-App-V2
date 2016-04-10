@@ -12,7 +12,7 @@ const playlistsDirective = () => ({
         <md-icon><i class="material-icons">clear</i></md-icon>
       </md-button>
       </div>
-      <creation-list creations="vm.selectedPlaylist.playlists"></creation-list>
+      <creation-list creations="vm.selectedPlaylist.playlists" remove-creation="vm.removeCreationFromPlaylist(index)"></creation-list>
       <div ng-if="vm.selectedPlaylist.playlists.length === 0">{{vm.selectedPlaylist.name}} est vide</div>
     </md-content>
   `,
@@ -38,6 +38,13 @@ class controller {
     this.Playlists.del(this.$stateParams.index)
       .then(() => this.$location.url('/'))
       .catch(() => this.$location.url('/'));
+  }
+
+  removeCreationFromPlaylist(creationIndex) {
+    this.Playlists.removeCreationFromPlaylist(this.$stateParams.index, creationIndex)
+      .then(() => this.Playlists.get())
+      .then(playlists => this.playlists = playlists)
+      .then(() => this.selectedPlaylist = this.playlists[this.$stateParams.index])
   }
 }
 

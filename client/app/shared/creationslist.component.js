@@ -4,7 +4,8 @@ const creationListDirective = () => ({
   restrict: 'E',
   scope: {},
   bindToController: {
-    creations: '='
+    creations: '=',
+    removeCreation: '&'
   },
   template: `
     <md-content layout="column">
@@ -19,7 +20,7 @@ const creationListDirective = () => ({
               <md-button ng-click="vm.play(creation.url)" class="md-icon-button md-primary">
                 <i class="material-icons">play_arrow</i>
               </md-button>
-              <md-menu md-offset="0 30">
+              <md-menu md-offset="0 30" ng-if="vm.showAddToPlaylist()">
                 <md-button ng-click="vm.getPlaylists(); $mdOpenMenu($event)" class="md-icon-button md-primary">
                   <i class="material-icons">playlist_add</i>
                 </md-button>
@@ -41,6 +42,10 @@ const creationListDirective = () => ({
             <i class="material-icons">comment</i>
           </md-button>
           <div>{{creation.dateCreation | relativeDate}}</div>
+          <md-button ng-if="vm.showRemoveFromPlaylist()" ng-click="vm.removeCreation({index: $index})" class="md-primary md-fab">
+            <md-tooltip md-direction="bottom">{{'CHAT_REMOVE' | translate}}</md-tooltip>
+            <md-icon><i class="material-icons">clear</i></md-icon>
+          </md-button>
         </div>
       </div>
     </md-content>
@@ -50,12 +55,15 @@ const creationListDirective = () => ({
 });
 
 class controller {
-  constructor(Auth, Users, Audio, Playlists, $translate) {
+  constructor(Auth, Users, Audio, Playlists, $translate, $location, $stateParams, $timeout) {
     this.Auth = Auth;
     this.Users = Users;
     this.Audio = Audio;
     this.Playlists = Playlists;
     this.$translate = $translate;
+    this.$location = $location;
+    this.$stateParams = $stateParams;
+    this.$timeout = $timeout;
 
     this.guitar = guitar;
   }
@@ -109,11 +117,28 @@ class controller {
     this.Playlists.addCreationToPlaylist(index, creation)
   }
 
+  /*removeCreationFromPlaylist(creation) {
+    console.log('creation', creation);
+    console.log('INDEX', this.$stateParams.index)
+  }*/
+
+  showAddToPlaylist() {
+    let path = this.$location.path();
+    path = path.split('/');
+    return (path[1] !== 'playlists');
+  }
+
+  showRemoveFromPlaylist() {
+    let path = this.$location.path();
+    path = path.split('/');
+    return (path[1] === 'playlists');
+  }
+
   isLog() {
     return this.Auth.isLog();
   }
 }
 
-controller.$inject = ['Auth', 'Users', 'Audio', 'Playlists', '$translate'];
+controller.$inject = ['Auth', 'Users', 'Audio', 'Playlists', '$translate', '$location', "$stateParams", '$timeout'];
 
 export default creationListDirective;
